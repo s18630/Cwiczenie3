@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Cwiczenie3.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cwiczenie3.Controllers
@@ -28,5 +29,14 @@ namespace Cwiczenie3.Controllers
             }
             return NotFound("Nie znaleziono studenta");
         }
+
+        [HttpPost]
+        public IActionResult CreateStudent(Student student)
+        {
+            //... add to database
+            student.IndexNumber = $"s{new Random().Next(1, 20000)}";
+            return Ok(student);
+        }
+
     }
 }
